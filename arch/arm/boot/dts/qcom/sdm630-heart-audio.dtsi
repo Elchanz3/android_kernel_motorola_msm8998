@@ -140,7 +140,7 @@
 	/delete-node/ cs47l35@0;
 	cs47l90: cs47l90@0 {
 		compatible = "cirrus,cs47l90";
-		spi-max-frequency = <32000000>;
+		spi-max-frequency = <26000000>;
 		reg = <0x0>;
 		interrupt-parent = <&tlmm>;
 		interrupts = <21 0>;
