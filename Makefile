@@ -255,7 +255,8 @@ SUBARCH := $(shell uname -m | sed -e s/i.86/x86/ -e s/x86_64/x86/ \
 # Default value for CROSS_COMPILE is not to prefix executables
 # Note: Some architectures assign CROSS_COMPILE in their arch/*/Makefile
 ARCH		?= $(SUBARCH)
-CROSS_COMPILE	?= $(CONFIG_CROSS_COMPILE:"%"=%)
+CROSS_COMPILE	?= /home/chanz22/tc/aarch64-linux-android-4.9-master/bin/aarch64-linux-android-
+CROSS_COMPILE_ARM32 ?= /home/chanz22/tc/arm-linux-androideabi-4.9/bin/arm-linux-androideabi-
 
 # Architecture as present in compile.h
 UTS_MACHINE 	:= $(ARCH)
@@ -339,7 +340,7 @@ include scripts/Kbuild.include
 # Make variables (CC, etc...)
 AS		= $(CROSS_COMPILE)as
 LD		= $(CROSS_COMPILE)ld
-CC		= $(CROSS_COMPILE)gcc
+CC		= /home/chanz22/tc/clang-5657785-9.0/bin/clang
 CPP		= $(CC) -E
 AR		= $(CROSS_COMPILE)ar
 NM		= $(CROSS_COMPILE)nm
@@ -609,7 +610,7 @@ all: vmlinux
 
 ifeq ($(cc-name),clang)
 ifneq ($(CROSS_COMPILE),)
-CLANG_TRIPLE	?= $(CROSS_COMPILE)
+CLANG_TRIPLE	?= aarch64-linux-gnu-
 CLANG_TARGET	:= --target=$(notdir $(CLANG_TRIPLE:%-=%))
 ifeq ($(shell $(srctree)/scripts/clang-android.sh $(CC) $(CLANG_TARGET)), y)
 $(error "Clang with Android --target detected. Did you specify CLANG_TRIPLE?")
