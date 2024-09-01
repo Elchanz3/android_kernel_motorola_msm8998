@@ -158,7 +158,7 @@
 	};
 
 	i2c_2: i2c@c176000 { /* BLSP1 QUP2 */
-		qcom,clk-freq-out = <110000>;
+		qcom,clk-freq-out = <100000>;
 	};
 };
 
