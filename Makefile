@@ -390,7 +390,7 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -fno-strict-aliasing -fno-common \
 		   -Werror-implicit-function-declaration \
 		   -Wno-format-security \
-		   -std=gnu89 $(call cc-option,-fno-PIE) -march=armv8-a	-mtune=cortex-a53 -mcpu=cortex-a53
+		   -std=gnu89 $(call cc-option,-fno-PIE)
 
 ifeq ($(TARGET_BOARD_TYPE),auto)
 KBUILD_CFLAGS    += -DCONFIG_PLATFORM_AUTO
@@ -643,7 +643,7 @@ KBUILD_CFLAGS	+= $(call cc-disable-warning, int-in-bool-context)
 KBUILD_CFLAGS	+= $(call cc-disable-warning, address-of-packed-member)
 KBUILD_CFLAGS	+= $(call cc-disable-warning, attribute-alias)
 
-KBUILD_CFLAGS   += -Ofast 
+KBUILD_CFLAGS   += -Ofast
 
 ifdef CONFIG_CC_WERROR
 KBUILD_CFLAGS	+= -Werror
