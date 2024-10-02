@@ -255,7 +255,8 @@ SUBARCH := $(shell uname -m | sed -e s/i.86/x86/ -e s/x86_64/x86/ \
 # Default value for CROSS_COMPILE is not to prefix executables
 # Note: Some architectures assign CROSS_COMPILE in their arch/*/Makefile
 ARCH		?= $(SUBARCH)
-CROSS_COMPILE	?= $(CONFIG_CROSS_COMPILE:"%"=%)
+CROSS_COMPILE	?= aarch64-linux-gnu-
+CROSS_COMPILE_ARM32 ?= arm-linux-gnueabi-
 
 # Architecture as present in compile.h
 UTS_MACHINE 	:= $(ARCH)
@@ -344,26 +345,15 @@ include scripts/Kbuild.include
 
 # Make variables (CC, etc...)
 CPP		= $(CC) -E
-ifneq ($(LLVM),)
-CC		= clang
-LD		= ld.lld
-AR		= llvm-ar
-NM		= llvm-nm
-OBJCOPY	= llvm-objcopy
-OBJDUMP	= llvm-objdump
-READELF	= llvm-readelf
-OBJSIZE	= llvm-size
-STRIP		= llvm-strip
-else
-AS		= $(CROSS_COMPILE)as
-LD		= $(CROSS_COMPILE)ld
-CC		= $(CROSS_COMPILE)gcc
-AR		= $(CROSS_COMPILE)ar
-NM		= $(CROSS_COMPILE)nm
-STRIP		= $(CROSS_COMPILE)strip
-OBJCOPY		= $(CROSS_COMPILE)objcopy
-OBJDUMP		= $(CROSS_COMPILE)objdump
-endif
+CC		= /home/chanz22/tc/neutron_18/bin/clang
+LD		= /home/chanz22/tc/neutron_18/bin/ld.lld
+AR		= /home/chanz22/tc/neutron_18/bin/llvm-ar
+NM		= /home/chanz22/tc/neutron_18/bin/llvm-nm
+OBJCOPY	        = /home/chanz22/tc/neutron_18/bin/llvm-objcopy
+OBJDUMP	        = /home/chanz22/tc/neutron_18/bin/llvm-objdump
+READELF	        = /home/chanz22/tc/neutron_18/bin/llvm-readelf
+OBJSIZE	        = /home/chanz22/tc/neutron_18/bin/llvm-size
+STRIP		= /home/chanz22/tc/neutron_18/bin/llvm-strip
 AWK		= awk
 GENKSYMS	= scripts/genksyms/genksyms
 INSTALLKERNEL  := installkernel
