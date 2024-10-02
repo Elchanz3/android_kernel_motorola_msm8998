@@ -7,6 +7,9 @@ export SEC_BUILD_CONF_VENDOR_BUILD_OS=14
 export CDIR="$(pwd)"
 export AK3="$(CDIR)/AnyKernel3"
 
+# PNY version
+export EXTRAVERSION=v0.1-clang-18
+
 mkdir builds-evert
 
 export OUT_DIR="/home/chanz22/Documentos/GitHub/android_kernel_motorola_msm8998/out"
