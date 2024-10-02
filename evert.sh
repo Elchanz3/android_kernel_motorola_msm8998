@@ -16,7 +16,7 @@ export OUT_DIR="/home/chanz22/Documentos/GitHub/android_kernel_motorola_msm8998/
 
 DATE_START=$(date +"%s")
 
-make O=out lineageos_evert_defconfig
+make O=out PNY_evert_defconfig
 
 make O=out -j8
 
