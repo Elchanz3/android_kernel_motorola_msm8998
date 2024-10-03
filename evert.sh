@@ -32,6 +32,11 @@ if [ ! -f "$CLANG_DIR/bin/clang-19" ]; then
     popd > /dev/null
 fi
 
+# Install some dependencies to compile kernel (ubuntu 24.10)
+
+sudo apt update
+sudo apt install build-essential libncurses-dev bison flex libssl-dev bc fakeroot cpio xz-utils git kmod clang gcc-aarch64-linux-gnu zip -y
+
 MAKE_ARGS="
 LLVM=1 \
 LLVM_IAS=1 \
