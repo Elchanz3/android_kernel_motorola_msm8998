@@ -5,25 +5,53 @@ export ANDROID_MAJOR_VERSION=u
 export ARCH=arm64
 export SEC_BUILD_CONF_VENDOR_BUILD_OS=14
 export CDIR="$(pwd)"
-export AK3="/home/chanz22/Documentos/GitHub/android_kernel_motorola_msm8998/AnyKernel3"
+export AK3="$PWD/AnyKernel3"
+export CLANG_DIR=$PWD/toolchain/neutron_19
+export CCACHE=ccache
 
 # PNY version
-export EXTRA=-v0.1-clang-18
+export EXTRA=-v0.1-clang-19
 
 mkdir builds-evert
 
-export OUT_DIR="/home/chanz22/Documentos/GitHub/android_kernel_motorola_msm8998/out"
+# Check if toolchain exists
+if [ ! -f "$CLANG_DIR/bin/clang-19" ]; then
+    echo "-----------------------------------------------"
+    echo "Toolchain not found! Downloading..."
+    echo "-----------------------------------------------"
+    rm -rf $CLANG_DIR
+    mkdir -p $CLANG_DIR
+    pushd toolchain/neutron_19 > /dev/null
+    bash <(curl -s "https://raw.githubusercontent.com/Neutron-Toolchains/antman/main/antman") -S=latest
+    echo "-----------------------------------------------"
+    echo "Patching toolchain..."
+    echo "-----------------------------------------------"
+    bash <(curl -s "https://raw.githubusercontent.com/Neutron-Toolchains/antman/main/antman") --patch=glibc
+    echo "-----------------------------------------------"
+    echo "Cleaning up..."
+    popd > /dev/null
+fi
+
+MAKE_ARGS="
+LLVM=1 \
+LLVM_IAS=1 \
+ARCH=arm64 \
+CCACHE=$CCACHE \
+O=out
+"
+
+export OUT_DIR="$PWD/out"
 
 DATE_START=$(date +"%s")
 
-make O=out PNY_evert_defconfig
+make ${MAKE_ARGS} PNY_evert_defconfig
 
-make O=out -j8
+make ${MAKE_ARGS} -j$CORES || abort
 
 IMAGE="$OUT_DIR/arch/arm64/boot/Image.gz-dtb"
 
 if [[ -f "$IMAGE" ]]; then
-    KERNELZIP="PNY_Kernel"
+    KERNELZIP="PNY_Kernel.zip"
 
     cp "$OUT_DIR"/arch/arm64/boot/Image.gz-dtb "$AK3"/Image.gz-dtb
     # Create the AnyKernel package

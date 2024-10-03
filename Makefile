@@ -345,15 +345,15 @@ include scripts/Kbuild.include
 
 # Make variables (CC, etc...)
 CPP		= $(CC) -E
-CC		= /home/chanz22/tc/neutron_18/bin/clang
-LD		= /home/chanz22/tc/neutron_18/bin/ld.lld
-AR		= /home/chanz22/tc/neutron_18/bin/llvm-ar
-NM		= /home/chanz22/tc/neutron_18/bin/llvm-nm
-OBJCOPY	        = /home/chanz22/tc/neutron_18/bin/llvm-objcopy
-OBJDUMP	        = /home/chanz22/tc/neutron_18/bin/llvm-objdump
-READELF	        = /home/chanz22/tc/neutron_18/bin/llvm-readelf
-OBJSIZE	        = /home/chanz22/tc/neutron_18/bin/llvm-size
-STRIP		= /home/chanz22/tc/neutron_18/bin/llvm-strip
+CC		= $(CCACHE) $(CLANG_DIR)/bin/clang
+LD		= $(CCACHE) $(CLANG_DIR)/bin/ld.lld
+AR		= $(CCACHE) $(CLANG_DIR)/bin/llvm-ar
+NM		= $(CCACHE) $(CLANG_DIR)/bin/llvm-nm
+OBJCOPY	        = $(CCACHE) $(CLANG_DIR)/bin/llvm-objcopy
+OBJDUMP	        = $(CCACHE) $(CLANG_DIR)/bin/llvm-objdump
+READELF	        = $(CCACHE) $(CLANG_DIR)/bin/llvm-readelf
+OBJSIZE	        = $(CCACHE) $(CLANG_DIR)/bin/llvm-size
+STRIP		= $(CCACHE) $(CLANG_DIR)/bin/llvm-strip
 AWK		= awk
 GENKSYMS	= scripts/genksyms/genksyms
 INSTALLKERNEL  := installkernel
