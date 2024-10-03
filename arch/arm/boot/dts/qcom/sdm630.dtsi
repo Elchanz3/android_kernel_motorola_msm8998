@@ -285,7 +285,7 @@
 		xo_board {
 			compatible = "fixed-clock";
 			#clock-cells = <0>;
-			clock-frequency = <19200000>;
+			clock-frequency = <21200000>;
 			clock-output-names = "xo_board";
 		};
 
@@ -1402,8 +1402,8 @@
 		qcom,cc-reads = <10>;
 		qcom,cc-delay = <5>;
 		qcom,cc-factor = <100>;
-		qcom,osm-clk-rate = <200000000>;
-		qcom,xo-clk-rate = <19200000>;
+		qcom,osm-clk-rate = <250000000>;
+		qcom,xo-clk-rate = <21200000>;
 
 		qcom,l-val-base = <0x17916004 0x17816004>;
 		qcom,apcs-itm-present = <0x179d143c 0x179d143c>;
