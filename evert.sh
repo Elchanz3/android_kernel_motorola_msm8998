@@ -5,10 +5,10 @@ export ANDROID_MAJOR_VERSION=u
 export ARCH=arm64
 export SEC_BUILD_CONF_VENDOR_BUILD_OS=14
 export CDIR="$(pwd)"
-export AK3="$(CDIR)/AnyKernel3"
+export AK3="/home/chanz22/Documentos/GitHub/android_kernel_motorola_msm8998/AnyKernel3"
 
 # PNY version
-export EXTRAVERSION=v0.1-clang-18
+export EXTRA=-v0.1-clang-18
 
 mkdir builds-evert
 
